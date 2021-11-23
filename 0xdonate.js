@@ -1,7 +1,7 @@
 console.log("0xdonate.js loaded")
 
 // smart contract address on Ropsten
-const contractAddress = "0xD41EE86285FB37DB9228717518739A0640916ab7"
+const contractAddress = "0x193628085f98cF8014460a311f2Da5b7BFC45387"
 
 // smart contract interface
 const ABI = [

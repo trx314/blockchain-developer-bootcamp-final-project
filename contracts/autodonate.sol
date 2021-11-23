@@ -59,13 +59,6 @@ returns(uint balance)
   balance = 55000; // temporary fixed balance for testing, waiting for aave contract integration
 }
 
-// getter to retrieve to sharesTotal
-function getSharesTotal(address token) public view
-returns(uint shares)
-{
-  shares = sharesTotal[token];
-}
-
 // computes the revenue of an account since the last donation event
 // it is computed as the difference between the current value of the pool owned by the user and the stored user balance which represents the initial allocation.
 function computeRevenue(address user, address token) public view

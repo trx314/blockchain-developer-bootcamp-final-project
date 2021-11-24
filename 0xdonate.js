@@ -223,8 +223,8 @@ async function create_pos(myContractWithSigner) {
 		// retrieve the address of token to supply
 		const tokenAddress_create = document.getElementById('tokenAddress_create').value;
 		// retrieve the quantity of token to supply
-		let q = document.getElementById('quantity_create').value;
-		const quantity_create = ethers.utils.parseUnits(q,18);
+		let quantity_create = document.getElementById('quantity_create').value;
+		//const quantity_create = ethers.utils.parseUnits(q,18); for now we do not manage the parsing unit
 		console.log("quantity is: " + quantity_create);
 		// retrieve the recipient address
 		let recipient_create = document.getElementById('recipient_create').value;
@@ -261,7 +261,7 @@ async function balanceOf(donor, token) {
 	let balanceField = document.getElementById("balanceField");
 	let recipientField = document.getElementById("recipientField");
 	let shareField = document.getElementById("shareField");
-	balanceField.innerHTML = "balance: " +  balance.balance / 1000000000000000000;
+	balanceField.innerHTML = "balance: " +  balance.balance;
 	recipientField.innerHTML = "recipient: " +  balance.recipient;
 	shareField.innerHTML = "share to donate: " +  balance.shareDonate + "%";
 }

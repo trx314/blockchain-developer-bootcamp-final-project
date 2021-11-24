@@ -68,7 +68,7 @@ returns(address recipient, uint balance, uint percentDonate, uint shares)
 function getAaveBalance(address user, address token) public pure
 returns(uint balance)
 {
-  balance = 1012; // temporary fixed balance for testing, waiting for aave contract integration
+  balance = 3012; // temporary fixed balance for testing, waiting for aave contract integration
 }
 
 // computes the revenue of an account since the last donation event

@@ -23,5 +23,19 @@ def test_sharesTotal(donor1, donor2, contract, token, recipient):
     contract.createBalance(token, recipient, 30, 2000, {'from': donor2})
     assert contract.sharesTotal(token) == 3000 # sharesTotal 3000 = 1000 + 2000
 
+# test05: getBalance returns the correct data for both donors
+def test_getBalance(donor1, donor2, contract, token, recipient):
+    contract.createBalance(token, recipient, 25, 1000, {'from': donor1})
+    contract.createBalance(token, recipient, 30, 2000, {'from': donor2})
+    assert contract.getBalance(donor1, token) == (recipient, 1000, 25, 1000) and \
+        contract.getBalance(donor2, token) == (recipient, 2000, 30, 2000)
 
+# test06: computeToDonate returns the correct data for both donors
+def test_computeToDonate(donor1, donor2, contract, token, recipient):
+    contract.createBalance(token, recipient, 25, 1000, {'from': donor1})
+    contract.createBalance(token, recipient, 30, 2000, {'from': donor2})
+    # with balance Aave = 3012 => donor1 should donate 0.25*(1000/3000)*(3012-3000) = 1
+    # donor2 should donate 0.30*(2000/3000)*(3012-3000) = 2.4
+    assert contract.computeToDonate(donor1, token) == 1 and \
+        contract.computeToDonate(donor2, token) == 2
 

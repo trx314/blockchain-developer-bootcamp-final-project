@@ -34,7 +34,7 @@ def test_getBalance(donor1, donor2, contract, token, recipient):
 def test_computeToDonate(donor1, donor2, contract, token, recipient):
     contract.createBalance(token, recipient, 25, 1000, {'from': donor1})
     contract.createBalance(token, recipient, 30, 2000, {'from': donor2})
-    # with balance Aave = 3012 => donor1 should donate 0.25*(1000/3000)*(3012-3000) = 1
+    # with balance Aave = 3000 + 12 => donor1 should donate 0.25*(1000/3000)*(3012-3000) = 1
     # donor2 should donate 0.30*(2000/3000)*(3012-3000) = 2.4
     assert contract.computeToDonate(donor1, token) == 1 and \
         contract.computeToDonate(donor2, token) == 2

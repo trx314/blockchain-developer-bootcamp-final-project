@@ -393,7 +393,7 @@ async function balanceOf(donor, token) {
 	const balance = await myContract.getBalance(donor, token);
 	console.log("recipient: " +  balance.recipient);
 	console.log("balance: " +  balance.balance);
-	console.log("share to donate: " +  balance.shareDonate + "%");
+	console.log("share to donate: " +  balance.percentDonate + "%");
 	const dispBalances = document.getElementById("dispBalances");
 	dispBalances.style.display = "block";
 	let balanceField = document.getElementById("balanceField");
@@ -401,7 +401,7 @@ async function balanceOf(donor, token) {
 	let shareField = document.getElementById("shareField");
 	balanceField.innerHTML = "balance: " +  balance.balance;
 	recipientField.innerHTML = "recipient: " +  balance.recipient;
-	shareField.innerHTML = "share to donate: " +  balance.shareDonate + "%";
+	shareField.innerHTML = "share to donate: " +  balance.percentDonate + "%";
 }
 
 

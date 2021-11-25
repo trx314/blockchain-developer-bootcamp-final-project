@@ -1,7 +1,7 @@
 console.log("0xdonate.js loaded")
 
 // smart contract address on Ropsten
-const contractAddress = "0x193628085f98cF8014460a311f2Da5b7BFC45387"
+const contractAddress = "0xbB30bA2E0E7B3faB533aE8139681C3F5169741f6"
 
 // smart contract interface
 const ABI = [
@@ -9,6 +9,80 @@ const ABI = [
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "allowedRecipient",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "allowedToken",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "donor",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "computeRevenue",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "revenue",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "donor",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "computeToDonate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "toDonate",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -45,10 +119,45 @@ const ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
 		"name": "distributeDonations",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "getAaveBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -78,7 +187,12 @@ const ABI = [
 			},
 			{
 				"internalType": "uint256",
-				"name": "shareDonate",
+				"name": "percentDonate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "shares",
 				"type": "uint256"
 			}
 		],
@@ -107,12 +221,36 @@ const ABI = [
 			},
 			{
 				"internalType": "uint256",
-				"name": "shareDonate",
+				"name": "percentDonate",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
 				"name": "balance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "shares",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "sharesTotal",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
 				"type": "uint256"
 			}
 		],

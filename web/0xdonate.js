@@ -335,15 +335,6 @@ mmConnectButton.onclick = async ()=> {
 	display_account();
 }
 
-// button Get Balance will get the token address and get the balance for the current account and token
-// uniswap token for tests: 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984
-getBalanceButton.onclick = async ()=> {
-	const tokenAddress = document.getElementById('tokenAddress').value;
-	console.log("tokenAddress: " +  tokenAddress);
-	// retrieve the balance
-	balanceOf(mmCurrentAccount, tokenAddress)
-}
-
 // button will get the information from the form in order to create a new position. 
 // It will send the tx with the current address and the information filled in the form: 
 // token, recipient address, share of revenue to donate
@@ -354,6 +345,15 @@ createPosButton.onclick = async ()=> {
 	const myContractWithSigner = myContract.connect(signer);
 	console.log(myContractWithSigner);
 	create_pos(myContractWithSigner);
+}
+
+// button Get Balance will get the token address and get the balance for the current account and token
+// uniswap token for tests: 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984
+getBalanceButton.onclick = async ()=> {
+	const tokenAddress = document.getElementById('tokenAddress').value;
+	console.log("tokenAddress: " +  tokenAddress);
+	// retrieve the balance
+	balanceOf(mmCurrentAccount, tokenAddress)
 }
 
 // get all information from the form "Create a Position"
@@ -371,10 +371,20 @@ async function create_pos(myContractWithSigner) {
 		let share_create = document.getElementById('share_create').value;
 		console.log("share to donate is: " + share_create);
 		// execute smart contract function to create the position
-		const tx_create = await myContractWithSigner.createBalance(tokenAddress_create, recipient_create, share_create, quantity_create)
-		console.log("tx_create: " + tx_create);
+		try{
+			const tx_create = await myContractWithSigner.createBalance(tokenAddress_create, recipient_create, share_create, quantity_create)
+			console.log("tx_create: " + tx_create);
+			msg = "The transaction was successfully sent on the blockchain!\n\n";
+			msg += "Wait for the confirmation, then use the 'Get Balance' button to retrieve your position.\n\n";
+			alert(msg)
+		} catch (err) {
+			msg = "There was an error, the operation failed!\n\n";
+			msg += "Check the aToken address and the recipient address:\n\n";
+			msg += "aToken authorized: aDai\n0x028171bca77440897b824ca71d1c56cac55b68a3\n\n";
+			msg += "recipient authorized: GiveDirectly\n0x750EF1D7a0b4Ab1c97B7A623D7917CcEb5ea779C\n";
+			alert(msg);
+		}
 }
-
 
 // retrieve the current account (see doc https://docs.metamask.io/guide/ethereum-provider.html#using-the-provider)
 async function getMMAccount() {

@@ -13,9 +13,30 @@
     <div id="mmDetected"></div>
     <button id="mmConnect">Connect to Metamask</button>
     <br>
+    <br>
 
-    <!-- Retrieve the Balances from the Smart Contract -->
-    <h4>Retrieve your balances</h4>
+    <!-- Create a new position (send a transaction to the Smart Contract) -->
+    <h4>Create a position</h4>
+    <form>
+        <label for="tokenAddress_create">Address of the token to deposit:</label>
+        <input type="text" id="tokenAddress_create">
+        <br>
+        <label for="quantity_create">Quantity of the token to deposit:</label>
+        <input type="number" id="quantity_create" min="0">
+        <br>
+        <label for="recipient_create">Address of the recipient of the donations:</label>
+        <input type="text" id="recipient_create">
+        <br>
+        <label for="share_create">Share of the revenues in % to donate: </label>
+        <input type="number" id="share_create" min="5" max="100" step="1" value="25">
+    </form>
+    <button id="createPosButton">Create the position</button>
+    <div id="success_create" style="display: none">Position successfully created!</div>
+    <br>
+    <br>
+
+  <!-- Retrieve the Balances from the Smart Contract -->
+    <h4 >Retrieve your balances</h4>
     <form>
         <label for="tokenAddress">Addess of the token to retrieve:</label>
         <input type="text" id="tokenAddress">
@@ -29,36 +50,9 @@
         <div id="shareField">test share</div>
     </div>
 
-    <!-- Create a new position (send a transaction to the Smart Contract) -->
-    <h4>Create a position</h4>
-    <form>
-        <label for="tokenAddress_create">Address of the token to send:</label>
-        <input type="text" id="tokenAddress_create">
-        <br>
-        <label for="quantity_create">Quantity of the token to send:</label>
-        <input type="number" id="quantity_create" min="0">
-        <br>
-        <label for="recipient_create">Address of the recipient of the donations:</label>
-        <input type="text" id="recipient_create">
-        <br>
-        <label for="share_create">Share of the revenues in % to donate monthly: </label>
-        <input type="number" id="share_create" min="5" max="100" step="1" value="25">
-    </form>
-    <button id="createPosButton">Create the position</button>
-    <div id="success_create" style="display: none">Position successfully created!</div>
-
     <!-- load javascipts -->
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
         type="application/javascript"></script>
     <script src="0xdonate.js"></script>
 </body>
 </html>
-
-
-
-<!-- 1 - detect the presence of Metamask
-2 - connect to the current account
-3 - display information from smart contract 
-4 - submit transaction to smart contract
-5 - monitor the state of the transaction
-6 - update the front end interface -->

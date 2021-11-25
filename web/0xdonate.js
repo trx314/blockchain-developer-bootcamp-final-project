@@ -305,7 +305,7 @@ const getBalanceButton = document.getElementById('getBalance');
 // detect if Metamask is installed
 if(typeof window.ethereum !== 'undefined') {
     console.log("metamask ok");
-    mmDetected.innerHTML = "MM has been detected";
+    mmDetected.innerHTML = "Metamask detected";
 } else {
     console.log("no metamask");
     alert("you meed to install metamask");
@@ -395,7 +395,7 @@ async function getMMAccount() {
 
 // display the current account
 function display_account() {
-    mmDetected.innerHTML += " - your connected account is: " + mmCurrentAccount;
+    mmDetected.innerHTML = "Connected as: " + mmCurrentAccount;
 }
 
 // retrieve balance from the contract for a given donor and token

@@ -1,4 +1,4 @@
-# Auto Donation Contract
+# 0xDonate - auto donation contract
 (blockchain-developer-bootcamp-final-project)
 
 *note: this is a new idea, totally different from the one uploaded previously (The ReBalancer)

@@ -1,6 +1,6 @@
 from brownie import *
 
-token = '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
+token = '0x028171bca77440897b824ca71d1c56cac55b68a3'
 
 def main():
 

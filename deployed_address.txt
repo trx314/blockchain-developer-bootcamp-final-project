@@ -1,0 +1,2 @@
+contract address on KOVAN network
+0xbB30bA2E0E7B3faB533aE8139681C3F5169741f6

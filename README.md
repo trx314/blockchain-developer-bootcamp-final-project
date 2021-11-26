@@ -107,3 +107,7 @@ In the **root** folder, the files *README.md*, *deployed_address.txt*, *design_p
 https://www.loom.com/share/ec48be5515e04cc9905ce1c55727b488
 
 
+## EThereum address to receive POAP
+
+0xbF802FD66b2c30d16747A896AC9847e0d7bA9b69
+
